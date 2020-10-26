@@ -1,3 +1,6 @@
+(require-package 'org)
+(require-package 'org-bullets)
+
 (require 'org)
 (require 'org-tempo) ;;enable org tempo expends snippets, like '< s <TAB>' create a code block
 (require 'org-bullets)

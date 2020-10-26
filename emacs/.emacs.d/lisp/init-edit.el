@@ -1,3 +1,6 @@
+(require-package 'smartparens)
+(require-package 'company)
+
 ;; 设置smartparens-mode
 (with-eval-after-load 'smartparens
   (require 'smartparens-config)

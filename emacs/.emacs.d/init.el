@@ -1,55 +1,27 @@
-;;; definitions
-(defvar startup-time (current-time)
-  "Note the start time of load config files")
-
 (defvar init-root (file-truename "~/.emacs.d/lisp/")
   "The root directory of config files")
 
-(defvar init-files (and (or (file-exists-p init-root)
-			      (mkdir init-root))
-			  (concat init-root "%s.el"))
-  "Config files")
+(push (and (or (file-exists-p init-root) (mkdir init-root))
+           init-root)
+     load-path)
 
-(defvar entry-file (file-truename "~/forMe/ToDo.org")
-  "The file to be visited first") 
-
-(defun self-require (pkg &optional disable)
-  "load my config files"
-  (or disable
-      (let ((file (file-truename (format init-files pkg))))
-	(or (file-exists-p file)
-	    (write-region (format "(provide '%s)" pkg) nil file))
-	(load file t nil t))))
 
 ;; pacakges setting, this setting must in the first place.
-(self-require 'init-package)
+(require 'init-package)
 ;; edit
-(self-require 'init-edit)
+(require 'init-edit)
 ;; frame
-(self-require 'init-frame)
+(require 'init-frame)
 ;; keys
-(self-require 'init-keys)
+(require 'init-keys)
 ;; ui
-(self-require 'init-theme)
-;; eshell
-(self-require 'init-eshell t)
-;; rust
-(self-require 'init-rust)
+(require 'init-theme)
 ;; elisp
-(self-require 'init-elisp)
+(require 'init-elisp)
 ;; org
-(self-require 'init-org)
+(require 'init-org)
 ;; misc
-(self-require 'init-misc)
-;; pyim
-(self-require 'init-pyim)
-;; ivy
-(self-require 'init-ivy)
-;; youdao
-(self-require 'init-youdao-dic.el)
-
-(setq initial-buffer-choice
-      (and (file-exists-p entry-file) entry-file))
+(require 'init-misc)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
