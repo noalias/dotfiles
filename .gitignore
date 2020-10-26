@@ -1,0 +1,14 @@
+# 忽略 vim 插件
+neovim/nvim/*
+!neovim/nvim/init.vim
+!neovim/nvim/coc-settings.json
+!neovim/nvim/UltiSnips/
+
+# 忽略 emacs 插件
+emacs/.emacs.d/*
+!emacs/.emacs.d/init.el
+!emacs/.emacs.d/lisp/
+
+# 忽略 cargo
+cargo/.cargo/*
+!cargo/.cargo/config
